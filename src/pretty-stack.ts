@@ -22,13 +22,13 @@ export const prettyStack = (err: Error) => {
 
     // message
     const message = lines[0].replace('Error: ', '');
-    const error = `${color.bgBrightRed(' Error ')} ${message.trim()}\n`;
+    const error = `${color.bgBrightRed(' Error ')} \n${message.trim()}\n`;
     lines.shift();
 
     // stack
     const stack = lines
         .map(s => {
-            const split = s.trim().split(' ');
+            const split = s.trim().replace('async ', '').split(' ');
 
             // no name if anonymous
             const [name, file] =
@@ -43,7 +43,6 @@ export const prettyStack = (err: Error) => {
 
             // relative path from where this script runs from
             const relative = file
-                .replace('file://', '')
                 .replace('(', '')
                 .replace(')', '')
                 .split(l)
