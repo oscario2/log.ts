@@ -1,0 +1,13 @@
+{
+    "name": "x2",
+    "description": "",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "./build/index.js",
+    "module": "./build/index.js",
+    "types": "./build/index.d.ts",
+    "scripts": {
+        "deno": "deno run tests/logger.test.ts",
+        "all": "npm run deno"
+    }
+}
